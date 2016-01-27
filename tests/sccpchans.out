@@ -1,0 +1,33 @@
+
++--- Channels ----------------------------------------------------------------------------------------------------------------------------------------------+
+| ID    Name                      LineName   DeviceName       NumCalled  PBX State  SCCP State ReadCodec  WriteCodec RTPPeer                Direct DTMFmode |
++ ===== ========================= ========== ================ ========== ========== ========== ========== ========== ====================== ====== ======== +
+| 1852  SCCP/1001-0000073c        1001       SEP00192F4F69BA  9819665773 Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.99.235:26780 no     RFC2833  |
+| 1859  SCCP/1063-00000743        1063       SEP001906413E71  9819643288 Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.99.237:17326 no     RFC2833  |
+| 1860  SCCP/1301-00000744        1301       (unknown)        9819983734 Up         HOLD       ulaw/64k   ulaw/64k        10.8.66.240:32442 no     RFC2833  |
+| 1867  SCCP/1301-0000074b        1301       SEP00192F9051EE             OffHook    DIGITSFOLL ulaw/64k   ulaw/64k                          no     RFC2833  |
+| 1752  SCCP/1403-000006d8        1403       SEP0019068BE553  9819576260 Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.98.211:22226 no     RFC2833  |
+| 1848  SCCP/1603-00000738        1603       SEP001906964DCC  9188863206 Up         CONNECTED  slin16     slin16          10.8.99.207:18040 no     RFC2833  |
+| 1842  SCCP/1717-00000732        1717       SEP0026CB3C004A  9819986333 Up         CONNECTED  ulaw/64k   ulaw/64k       10.6.106.130:30916 no     RFC2833  |
+| 1861  SCCP/2301-00000745        2301       SEP00192F904D58  5375       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.10.46:32186 no     RFC2833  |
+| 1869  SCCP/2400-0000074d        2400       (unknown)        2400       Down       RINGING    ulaw/64k   ulaw/64k                          no     RFC2833  |
+| 1868  SCCP/2406-0000074c        2406       (unknown)        2406       Down       RINGING    ulaw/64k   ulaw/64k                          no     RFC2833  |
+| 1831  SCCP/2700-00000727        2700       SEP00192F7F272F  2700       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.2.173:24696 no     RFC2833  |
+| 1835  SCCP/2714-0000072b        2714       SEP001906964EFB  9811       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.3.209:21436 no     RFC2833  |
+| 1709  SCCP/3026-000006ad        3026       SEP001906414124  9187724888 Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.35.74:29130 no     RFC2833  |
+| 1865  SCCP/3060-00000749        3060       SEP00192F3A31BC  *98        Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.35.176:27056 no     RFC2833  |
+| 1857  SCCP/3080-00000741        3080       SEP001AA22BD77D  9819743639 Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.35.225:25016 no     RFC2833  |
+| 1866  SCCP/3130-0000074a        3130       SEP001906414228             OffHook    DIGITSFOLL ulaw/64k   ulaw/64k                          no     RFC2833  |
+| 1858  SCCP/4000-00000742        4000       SEP00192F0C0FE3  4000       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.35.56:17812 no     RFC2833  |
+| 1800  SCCP/4006-00000708        4006       SEP00192F904B56  9181942660 Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.34.82:26930 no     RFC2833  |
+| 1854  SCCP/4010-0000073e        4010       SEP00190670DC94  4010       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.35.76:28262 no     RFC2833  |
+| 1730  SCCP/5216-000006c2        5216       SEP00192F4F686F  5501       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.3.168:32696 no     RFC2833  |
+| 1863  SCCP/5258-00000747        5258       SEP0018BAC9DAB8  9819663922 Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.3.179:18026 no     RFC2833  |
+| 1725  SCCP/5283-000006bd        5283       SEP00192F4F6906  5283       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.3.204:30626 no     RFC2833  |
+| 1862  SCCP/5375-00000746        5375       SEP001AA1CF1CD5  5375       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.3.182:25872 no     RFC2833  |
+| 1732  SCCP/5501-000006c4        5501       SEP001906964BD3  5501       Up         CONNECTED  ulaw/64k   ulaw/64k         10.8.2.224:26756 no     RFC2833  |
+| 1853  SCCP/6100-0000073d        6100       SEP00192F0C1101  6100       Up         CONNECTED  ulaw/64k   ulaw/64k        10.8.35.175:24780 no     RFC2833  |
+| 1850  SCCP/6117-0000073a        6117       SEP001906964CEA  6100       Up         CONNECTED  ulaw/64k   ulaw/64k         10.6.53.26:29652 no     RFC2833  |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Setting max files open to 65535
+Asterisk ending (0).
