@@ -1,4 +1,5 @@
 from re import match
+import csv
 
 class SCCPRefcount(object):
   def __init__(self, data):
@@ -35,6 +36,10 @@ class SCCPRefcount(object):
       if channels.device_exists(item['dev']) is False:
         refs.append(item)
     self.__refs = refs
+    self.index = self.size()
+
+  def diff_file(self, file):
+    pass
 
   def next(self):
     if self.index == 0:
