@@ -1,20 +1,16 @@
 from re import match
-from os import path
 
 class SCCPChans(object):
-  def __init__(self, filename):
-    if not path.exists(filename):
-      raise IOError("File %s not found" % filename)
-    fd = open(filename, "r")
+  def __init__(self, data):
     self.__channels = list()
-    self.__parse_chans(fd)
+    self.__parse_chans(data)
     self.index = self.size()
 
   def __iter__(self):
     return self
 
-  def __parse_chans(self, fd):
-    for line in fd:
+  def __parse_chans(self, data):
+    for line in data.split('\n'):
       if match(r'^\|\s+\d+\s+', line) is None:
         continue
       name,line,dev = line.split()[2:5]

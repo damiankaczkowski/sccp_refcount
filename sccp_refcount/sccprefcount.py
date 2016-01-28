@@ -1,20 +1,16 @@
 from re import match
-from os import path
 
 class SCCPRefcount(object):
-  def __init__(self, filename):
-    if not path.exists(filename):
-      raise IOError("File %s not found" % filename)
-    fd = open(filename, "r")
+  def __init__(self, data):
     self.__refs = list()
-    self.__parse_refs(fd)
+    self.__parse_refs(data)
     self.index = self.size()
 
   def __iter__(self):
     return self
 
-  def __parse_refs(self, fd):
-    for line in fd:
+  def __parse_refs(self, data):
+    for line in data.split('\n'):
       if match(r'^\|\s+((\[\s*\d+\s*\])|(\+->))', line) is None:
         continue
       type, id = [ item.strip() for item in line.split('|')[2:4] ]

@@ -3,13 +3,12 @@ from sccp_refcount.sccpchans import SCCPChans
 
 class TestSCCPChansClass(object):
     def setUp(self):
-        self.filename = "tests/sccpchans.out"
-        self.channels = SCCPChans(self.filename)
+        self.fd = open("tests/sccpchans.out", "r")
+        self.data = self.fd.read()
+        self.channels = SCCPChans(self.data)
 
-
-    @raises(IOError)
-    def test_file_doesnt_exists(self):
-        SCCPChans("none_existsing_file")
+    def tearDown(self):
+        self.fd.close()
 
     def test_device_exists(self):
         c = self.channels

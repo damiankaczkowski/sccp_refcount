@@ -4,8 +4,12 @@ from sccp_refcount.sccpchans import SCCPChans
 
 class TestSCCPRefcountClass(object):
     def setUp(self):
-        self.filename = "tests/refcount.out"
-        self.refs = SCCPRefcount(self.filename)
+        self.fd = open("tests/refcount.out", "r")
+        self.data = self.fd.read()
+        self.refs = SCCPRefcount(self.data)
+
+    def tearDown(self):
+        self.fd.close()
 
     def test_count_parsed_refs(self):
         r = self.refs
@@ -34,7 +38,8 @@ class TestSCCPRefcountClass(object):
 
     def test_refs_sub_channels(self):
         r = self.refs
-        chans = SCCPChans("tests/sccpchans.out")
+        fd = open("tests/sccpchans.out", "r")
+        chans = SCCPChans(fd.read())
         assert_true(r.device_exists("SEP00192F7F272F"))
         r.sub(chans)
         assert_false(r.device_exists("SEP00192F7F272F"))
