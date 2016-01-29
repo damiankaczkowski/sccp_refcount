@@ -4,7 +4,7 @@ from sccp_refcount.sccprefcount import SCCPRefcount
 from sccp_refcount.sccpchans import SCCPChans
 from sccp_refcount.astman import Astman
 from optparse import OptionParser
-import sys, os
+import sys, os, csv
 
 class SCCPRefcountMain(object):
     def __init__(self):
@@ -29,10 +29,10 @@ class SCCPRefcountMain(object):
 
     def save_diff(self, file):
       self.refs.sub(self.chans)
-      fieldnames = ['type', 'dev', 'line']
+      fieldnames = {'type':'type', 'dev':'dev', 'line':'line'}
       if os.path.exists(file):
           fd = open(file, "r")
-          ret = csv.DictReader(fd)
+          ret = csv.DictReader(fd, fieldnames)
           csvdata = list()
           for line in ret:
               csvdata.append(line)
@@ -40,8 +40,8 @@ class SCCPRefcountMain(object):
           fd.close()
 
       fd = open(file, "w")
-      writer = csv.DictWriter(fd, fieldnames=fieldnames)
-      writer.writeheader()
+      writer = csv.DictWriter(fd, fieldnames)
+      writer.writerow(fieldnames)
       for l in data:
           writer.writerow(l)
 

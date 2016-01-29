@@ -45,9 +45,9 @@ class SCCPRefcount(object):
         refs.append(item)
     return refs
 
-  def in_list(self, data):
+  def in_list(self, dev, data):
     for item in data:
-      if self.device_exists(item['dev']):
+      if dev in item.values():
         return True
     return False
 
