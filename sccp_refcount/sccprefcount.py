@@ -38,8 +38,18 @@ class SCCPRefcount(object):
     self.__refs = refs
     self.index = self.size()
 
-  def diff_file(self, file):
-    pass
+  def diff_csv(self, data):
+    refs = list()
+    for item in self.__refs:
+      if self.in_list(item['dev'], data) is False:
+        refs.append(item)
+    return refs
+
+  def in_list(self, data):
+    for item in data:
+      if self.device_exists(item['dev']):
+        return True
+    return False
 
   def next(self):
     if self.index == 0:

@@ -1,6 +1,7 @@
 from nose.tools import *
 from sccp_refcount.astman import Astman
 
+"""
 class TestAsteriskManagerClass(object):
 
   def setUp(self):
@@ -15,3 +16,4 @@ class TestAsteriskManagerClass(object):
 
   def test_channels(self):
     print self.man.sccp_refcount()
+"""

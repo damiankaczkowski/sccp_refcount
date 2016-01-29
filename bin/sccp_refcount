@@ -1,36 +1,55 @@
 #!/usr/bin/env python
+
 from sccp_refcount.sccprefcount import SCCPRefcount
 from sccp_refcount.sccpchans import SCCPChans
 from sccp_refcount.astman import Astman
 from optparse import OptionParser
-import sys
+import sys, os
 
-def main():
-  opts = parse_args()
-  ami = Astman(opts.user, opts.pwd, opts.host)
-  chans = SCCPChans(ami.sccp_channels())
-  refs = SCCPRefcount(ami.sccp_refcount())
-  save_diff(refs, chans, opts.file)
+class SCCPRefcountMain(object):
+    def __init__(self):
+      opts = self.parse_args()
+      self.ami = Astman(opts.user, opts.pwd, opts.host)
+      self.chans = SCCPChans(self.ami.sccp_channels())
+      self.refs = SCCPRefcount(self.ami.sccp_refcount())
+      self.save_diff(opts.file)
 
-def parse_args():
-  parser = OptionParser("Usage: %prog [options]")
-  parser.add_option("-u", "--user", help="Asterisk Manager username")
-  parser.add_option("-p", "--pwd", help="Asterisk Manager password")
-  parser.add_option("-H", "--host", help="Asterisk Manager host", default='127.0.0.1')
-  parser.add_option("-f", "--file", help="Output diff file.", default='/tmp/sccp_refcount.csv')
-  (opts, args) = parser.parse_args()
-  if opts.user is None:
-    raise ValueError("Missing username.")
-  if opts.pwd is None:
-    raise ValueError("Missing password.")
-  return opts
+    def parse_args(self):
+      parser = OptionParser("Usage: %prog [options]")
+      parser.add_option("-u", "--user", help="Asterisk Manager username")
+      parser.add_option("-p", "--pwd", help="Asterisk Manager password")
+      parser.add_option("-H", "--host", help="Asterisk Manager host", default='127.0.0.1')
+      parser.add_option("-f", "--file", help="Output diff file.", default='/tmp/sccp_refcount.csv')
+      (opts, args) = parser.parse_args()
+      if opts.user is None:
+        raise ValueError("Missing username.")
+      if opts.pwd is None:
+        raise ValueError("Missing password.")
+      return opts
 
-def save_diff(refs, chans, file):
-  refs.sub(chans)
-  refs.diff_file(file)
+    def save_diff(self, file):
+      self.refs.sub(self.chans)
+      fieldnames = ['type', 'dev', 'line']
+      if os.path.exists(file):
+          fd = open(file, "r")
+          ret = csv.DictReader(fd)
+          csvdata = list()
+          for line in ret:
+              csvdata.append(line)
+          data = self.refs.diff_csv(csvdata)
+          fd.close()
+
+      fd = open(file, "w")
+      writer = csv.DictWriter(fd, fieldnames=fieldnames)
+      writer.writeheader()
+      for l in data:
+          writer.writerow(l)
+
+      fd.close()
 
 if __name__ == '__main__':
   try:
-    main()
+    SCCPRefcountMain()
   except Exception as e:
     print("ERROR: %s" % str(e))
+
